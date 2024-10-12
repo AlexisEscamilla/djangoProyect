@@ -377,31 +377,7 @@
                 getEmissionsCarbonByState(stateName);
             } else {
                 console.log("Estado no encontrado");
-            }
-
-            function smoothScrollTo(endY, duration) {
-                var startY = window.scrollY;
-                var distance = endY - startY;
-                var startTime = new Date().getTime();
-            
-                function scroll() {
-                    var currentTime = new Date().getTime();
-                    var time = Math.min(1, (currentTime - startTime) / duration);
-                    var easedTime = (time * (2 - time));
-            
-                    window.scrollTo(0, startY + (distance * easedTime));
-            
-                    if (time < 1) {
-                        requestAnimationFrame(scroll);
-                    }
-                }
-            
-                requestAnimationFrame(scroll);
-            }
-            smoothScrollTo(document.body.scrollHeight, 2000);
-
-
-            
+            }            
         }
     }
 );
@@ -459,30 +435,6 @@
         } else {
             console.log("Estado no encontrado");
         }
-
-        function smoothScrollTo(endY, duration) {
-            var startY = window.scrollY;
-            var distance = endY - startY;
-            var startTime = new Date().getTime();
-        
-            function scroll() {
-                var currentTime = new Date().getTime();
-                var time = Math.min(1, (currentTime - startTime) / duration);
-                var easedTime = (time * (2 - time));
-        
-                window.scrollTo(0, startY + (distance * easedTime));
-        
-                if (time < 1) {
-                    requestAnimationFrame(scroll);
-                }
-            }
-        
-            requestAnimationFrame(scroll);
-        }
-        smoothScrollTo(document.body.scrollHeight, 2000);
-
-
-        
     }
 }
 );
@@ -577,9 +529,6 @@
                 getEmissionsCarbonByState(stateName);
                 
                 document.getElementById('state-title-3').textContent = stateName;
-    
-                // Smooth scroll
-                smoothScrollTo(document.body.scrollHeight, 2000);
             } else {
                 console.log("Estado no encontrado");
             }
@@ -669,9 +618,6 @@
                 getEmissionsCarbonByState(stateName);
                 
                 document.getElementById('state-title-3').textContent = stateName;
-    
-                // Smooth scroll
-                smoothScrollTo(document.body.scrollHeight, 2000);
             } else {
                 console.log("Estado no encontrado");
             }
@@ -722,8 +668,6 @@
                 
                 document.getElementById('state-title-3').textContent = stateName;
     
-                // Smooth scroll
-                smoothScrollTo(document.body.scrollHeight, 2000);
             } else {
                 console.log("Estado no encontrado");
             }
@@ -740,6 +684,7 @@
                 strokeWidth: .15,
                 fill: "rgba(var(--warning-rgb))",
                 fillOpacity: 1
+                
             }
         },
         zoomOnScroll: false,
@@ -793,8 +738,6 @@
                 
                 document.getElementById('state-title-3').textContent = stateName;
     
-                // Smooth scroll
-                smoothScrollTo(document.body.scrollHeight, 2000);
             } else {
                 console.log("Estado no encontrado");
             }

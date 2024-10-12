@@ -30,6 +30,11 @@
         background-color: #3e8e41; /* Verde más oscuro */
         transform: scale(0.95);
     }
+
+    #mexico-map {
+        transform: scale(1) translate(-15%, 0);
+        transform-origin: center center;
+    }
 </style>
 {% endblock %} {% block content %}
 
@@ -38,7 +43,7 @@
     <div class="container-fluid">
         <!-- Start::row-1 -->
         <div class="row">
-            <h5 style="text-align: center;">Select a province from Spain map to view details</h5>
+            <h2 style="text-align: center;">Select a state from Mexico map to view details</h2>
         </div>
         <div class="row">
             {% comment %}
@@ -60,17 +65,9 @@
 
             {% endcomment %}
             <div class="col-xl-12" style="margin: auto; height: 80vh">
-                <!--<div class="card custom-card">
-                                <div class="top-left"></div>
-                                <div class="top-right"></div>
-                                <div class="bottom-left"></div>
-                                <div class="bottom-right"></div>
-                <div class="card-header">
-                                    <div class="card-title" style="font-size: 30px">US Map</div>
-                                </div>-->
                 <div class="card-body" style="height: 100%; padding: 0">
                     <div style="display: none" id="lines-map"></div>
-                    <div id="mexico-map" style="height: 100%; width: 100%"></div>
+                    <div id="mexico-map" style="height: 130%; width: 130%"></div>
                 </div>
             </div>
         </div>

@@ -375,6 +375,8 @@ def mexico (request):
     return render(request, 'mexico.html')
 def italy (request): 
     return render(request, 'italy.html')
+def usa (request): 
+    return render(request, 'usa.html')
 def widgets (request): 
     return render(request, 'widgets.html')
 def wishlist (request): 

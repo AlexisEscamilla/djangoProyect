@@ -646,7 +646,7 @@
                 "ns": "Nova Scotia",
                 "mb": "Manitoba",
                 "sk": "Saskatchewan",
-                "qc": "Québec",
+                "qc": "Quebec",
                 "pe": "Prince Edward Island",
                 "bc": "British Columbia",
                 "yt": "Yukon",

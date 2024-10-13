@@ -189,6 +189,7 @@ urlpatterns = [
     path('mexico', views.mexico, name='mexico'),
     path('italy', views.italy, name='italy'),
     path('usa', views.usa, name='usa'),
+    path('countries', views.countries, name='countries'),
     path('widgets', views.widgets, name='widgets'),
     path('wishlist', views.wishlist, name='wishlist'),
     #Mi api

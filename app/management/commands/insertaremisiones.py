@@ -7,7 +7,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         emisiones_data = [
-   Emisiones(co2e_emission=2400854.2, gas_name="Carbon Dioxide", year='2010', state_name="ALASKA"),
+Emisiones(co2e_emission=2400854.2, gas_name="Carbon Dioxide", year='2010', state_name="ALASKA"),
 Emisiones(co2e_emission=2724574, gas_name="Carbon Dioxide", year='2011', state_name="ALASKA"),
 Emisiones(co2e_emission=2620008.3, gas_name="Carbon Dioxide", year='2012', state_name="ALASKA"),
 Emisiones(co2e_emission=2830186.1, gas_name="Carbon Dioxide", year='2013', state_name="ALASKA"),
@@ -515,6 +515,49 @@ Emisiones(co2e_emission=59219, gas_name="Methane", year='2021', state_name="MAIN
 Emisiones(co2e_emission=58845.5, gas_name="Methane", year='2022', state_name="MAINE")
 
 ]
+        
+        emisiones_dataCanada = [
+Emisiones(co2e_emission=9.5, gas_name="Carbon Dioxide", year="1990", state_name="Newfoundland and Labrador"),
+Emisiones(co2e_emission=10.3, gas_name="Carbon Dioxide", year="2005", state_name="Newfoundland and Labrador"),
+Emisiones(co2e_emission=8.6, gas_name="Carbon Dioxide", year="2022", state_name="Newfoundland and Labrador"),
+Emisiones(co2e_emission=1.8, gas_name="Carbon Dioxide", year="1990", state_name="Prince Edward Island"),
+Emisiones(co2e_emission=1.9, gas_name="Carbon Dioxide", year="2005", state_name="Prince Edward Island"),
+Emisiones(co2e_emission=1.6, gas_name="Carbon Dioxide", year="2022", state_name="Prince Edward Island"),
+Emisiones(co2e_emission=19.6, gas_name="Carbon Dioxide", year="1990", state_name="Nova Scotia"),
+Emisiones(co2e_emission=22.8, gas_name="Carbon Dioxide", year="2005", state_name="Nova Scotia"),
+Emisiones(co2e_emission=14.8, gas_name="Carbon Dioxide", year="2022", state_name="Nova Scotia"),
+Emisiones(co2e_emission=16.2, gas_name="Carbon Dioxide", year="1990", state_name="New Brunswick"),
+Emisiones(co2e_emission=20.1, gas_name="Carbon Dioxide", year="2005", state_name="New Brunswick"),
+Emisiones(co2e_emission=12.5, gas_name="Carbon Dioxide", year="2022", state_name="New Brunswick"),
+Emisiones(co2e_emission=84.4, gas_name="Carbon Dioxide", year="1990", state_name="Quebec"),
+Emisiones(co2e_emission=85.6, gas_name="Carbon Dioxide", year="2005", state_name="Quebec"),
+Emisiones(co2e_emission=79.1, gas_name="Carbon Dioxide", year="2022", state_name="Quebec"),
+Emisiones(co2e_emission=178.4, gas_name="Carbon Dioxide", year="1990", state_name="Ontario"),
+Emisiones(co2e_emission=203.0, gas_name="Carbon Dioxide", year="2005", state_name="Ontario"),
+Emisiones(co2e_emission=157.0, gas_name="Carbon Dioxide", year="2022", state_name="Ontario"),
+Emisiones(co2e_emission=18.2, gas_name="Carbon Dioxide", year="1990", state_name="Manitoba"),
+Emisiones(co2e_emission=20.4, gas_name="Carbon Dioxide", year="2005", state_name="Manitoba"),
+Emisiones(co2e_emission=21.6, gas_name="Carbon Dioxide", year="2022", state_name="Manitoba"),
+Emisiones(co2e_emission=49.0, gas_name="Carbon Dioxide", year="1990", state_name="Saskatchewan"),
+Emisiones(co2e_emission=80.5, gas_name="Carbon Dioxide", year="2005", state_name="Saskatchewan"),
+Emisiones(co2e_emission=75.9, gas_name="Carbon Dioxide", year="2022", state_name="Saskatchewan"),
+Emisiones(co2e_emission=177.2, gas_name="Carbon Dioxide", year="1990", state_name="Alberta"),
+Emisiones(co2e_emission=251.1, gas_name="Carbon Dioxide", year="2005", state_name="Alberta"),
+Emisiones(co2e_emission=269.9, gas_name="Carbon Dioxide", year="2022", state_name="Alberta"),
+Emisiones(co2e_emission=51.1, gas_name="Carbon Dioxide", year="1990", state_name="British Columbia"),
+Emisiones(co2e_emission=62.7, gas_name="Carbon Dioxide", year="2005", state_name="British Columbia"),
+Emisiones(co2e_emission=64.3, gas_name="Carbon Dioxide", year="2022", state_name="British Columbia"),
+Emisiones(co2e_emission=0.5, gas_name="Carbon Dioxide", year="1990", state_name="Yukon"),
+Emisiones(co2e_emission=0.6, gas_name="Carbon Dioxide", year="2005", state_name="Yukon"),
+Emisiones(co2e_emission=0.7, gas_name="Carbon Dioxide", year="2022", state_name="Yukon"),
+Emisiones(co2e_emission=0, gas_name="Carbon Dioxide", year="1990", state_name="Northwest Territories"),
+Emisiones(co2e_emission=1.7, gas_name="Carbon Dioxide", year="2005", state_name="Northwest Territories"),
+Emisiones(co2e_emission=1.4, gas_name="Carbon Dioxide", year="2022", state_name="Northwest Territories"),
+Emisiones(co2e_emission=0, gas_name="Carbon Dioxide", year="1990", state_name="Nunavut"),
+Emisiones(co2e_emission=0.6, gas_name="Carbon Dioxide", year="2005", state_name="Nunavut"),
+Emisiones(co2e_emission=0.6, gas_name="Carbon Dioxide", year="2022", state_name="Nunavut"),
+
+]
         # Insertar los registros de manera masiva
-        Emisiones.objects.bulk_create(emisiones_data)
+        Emisiones.objects.bulk_create(emisiones_dataCanada)
         self.stdout.write(self.style.SUCCESS('Datos insertados exitosamente.'))

@@ -5,7 +5,10 @@ from django.http import JsonResponse
 from rest_framework.views import APIView
 from .serializers import EmisionesSerializer
 # Create your views here.
-
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .models import Emisiones
+from .serializers import EmisionesSerializer
 
 def accordions_collapse (request): 
     return render(request, 'accordions-collapse.html')
@@ -377,6 +380,8 @@ def italy (request):
     return render(request, 'italy.html')
 def usa (request): 
     return render(request, 'usa.html')
+def countries (request): 
+    return render(request, 'countries.html')
 def widgets (request): 
     return render(request, 'widgets.html')
 def wishlist (request): 
@@ -386,23 +391,11 @@ def wishlist (request):
 
 class EmisionesAPIView(APIView):
     def get(self, request):
-        # Carga los datos desde el archivo JSON
-        with open('data.json', 'r', encoding='utf-8') as file:
-            data = json.load(file)
-        
-        # Extraer los datos relevantes de las emisiones
-        emisiones_data = [
-            {
-                "co2e_emission": item["fields"]["co2e_emission"],
-                "gas_name": item["fields"]["gas_name"],
-                "year": item["fields"]["year"],
-                "state_name": item["fields"]["state_name"]
-            }
-            for item in data
-            if item["model"] == "app.emisiones"  # Filtrar por modelo
-        ]
+        # Obtén todos los registros de la base de datos
+        emisiones = Emisiones.objects.all()  # Cargar los datos desde la base de datos
         
         # Serializa los datos
-        serializer = EmisionesSerializer(emisiones_data, many=True)
+        serializer = EmisionesSerializer(emisiones, many=True)
         
-        return JsonResponse(serializer.data, safe=False)
+        # Retorna la respuesta JSON
+        return Response(serializer.data)

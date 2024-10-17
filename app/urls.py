@@ -192,6 +192,7 @@ urlpatterns = [
     path('countries', views.countries, name='countries'),
     path('widgets', views.widgets, name='widgets'),
     path('wishlist', views.wishlist, name='wishlist'),
+    path('get-answer/', views.get_gemini_answer, name='get_gemini_answer'),
     #Mi api
     path('api/emisiones/', EmisionesAPIView.as_view(), name='emisiones-api'),  # Assuming you have a view called `country_page`
 ]

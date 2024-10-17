@@ -6,29 +6,9 @@
 <link rel="stylesheet" href="{% static 'assets/libs/apexcharts/apexcharts.css'%}">
 <style>
     /* Estilos para el botón "Tell me a Climate Story" */
-    button {
-        background-color: #006803; /* Verde */
-        border-bottom: black;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: flex;
-        font-size: 12px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 10px;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-
-    button:hover {
-        background-color: #45a049; /* Verde oscuro */
-        transform: scale(1.05);
-    }
-
-    button:active {
-        background-color: #3e8e41; /* Verde más oscuro */
-        transform: scale(0.95);
+    
+   #bton-magico{
+       transform: scale(1.5);
     }
 </style>
 {% endblock %} {% block content %}
@@ -60,14 +40,7 @@
 
             {% endcomment %}
             <div class="col-xl-12" style="margin: auto; height: 80vh">
-                <!--<div class="card custom-card">
-                                <div class="top-left"></div>
-                                <div class="top-right"></div>
-                                <div class="bottom-left"></div>
-                                <div class="bottom-right"></div>
-                <div class="card-header">
-                                    <div class="card-title" style="font-size: 30px">US Map</div>
-                                </div>-->
+               
                 <div class="card-body" style="height: 100%; padding: 0">
                     <div style="display: none" id="lines-map"></div>
                     <div id="canada-map" style="height: 100%; width: 100%"></div>
@@ -88,7 +61,7 @@
                     <div class="bottom-right"></div>
                     <div class="card-header" style="justify-content: space-around;">
                         <!-- <div class="card-title" id="state-title-2">Reversed Bar Chart</div> -->
-                        <div class="card-title">Carbone Dioxide Emission</div>
+                        <div class="card-title">Carbone Dioxide Emission (Megatonnes of Carbon Equivalent)</div>
                     </div>
                     <div class="card-body">
                         <div id="bar-reversed"></div>
@@ -104,28 +77,176 @@
                     <div class="bottom-right"></div>
                     <div class="card-header" style="justify-content: space-around;">
                         <!-- <div class="card-title" id="state-title-2">Reversed Bar Chart</div> -->
-                        <div class="card-title">Methane Emission</div>
+                        <div class="card-title">Methane Emission (Megatonnes of Methane Equivalent)</div>
                     </div>
                     <div class="card-body">
                         <div id="bar-r"></div>
                     </div>
                 </div>
             </div>
-            <div>
-                <h3 style="text-align: center;">Artificial Intelligence</h3>
-                <div>
-                    <div style="display: flex;justify-content: center;">
-                        <button onclick="ia()">Tell me a Climate Story</button>
+
+            <div style="margin-bottom: 30px;">
+                <div class="card custom-card">
+                    <h1 style="text-align: center;">Ask artificial intelligence about climate change in a specific region!!</h1>
                     </div>
-                    <div class="row" class="card custom-card" id="state-card">
-                        <p style="text-align: -webkit-left; font-size: large;" id="ia-output"> </p>
-                    </div>
+
+                <div style="display: flex; justify-content: center;margin-top: 20px;">
+                    <button id ="bton-magico" type="button" class="btn btn-primary-light rounded-pill btn-wave" onclick="executeSearches()">Get an answer</button>
+                   
                 </div>
             </div>
+
+            <h3 id="complete"style="text-align: center;  color: greenyellow; margin-bottom: 30px; visibility: hidden;">Complete!</h3>
+            
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-4">
+                        <div class="card custom-card">
+                            <div class="top-left"></div>
+                            <div class="top-right"></div>
+                            <div class="bottom-left"></div>
+                            <div class="bottom-right"></div>
+                            <div class="card-header">
+                                <div class="card-titleQuestion1">
+                                    ¿What actions could you start doing to stop climate change and its consequences if I am from the province of <span id="state-title-4">.....</span>? (Trying to be more province focused)
+                                </div>
+                            </div>
+                            
+                            <div class="card-body">
+                                <div>
+                                    <div class="row" class="card custom-card" id="state-card">
+                                        <p style="text-align: -webkit-left; font-size: large;" id="ia-output2"></p>
+                                    </div>
+                                </div>
+                                
+                               
+                            </div>
+                          
+                            
+                        </div>
+                    </div>
+
+
+                    <div class="col-xl-4">
+                        <div class="card custom-card">
+                            <div class="top-left"></div>
+                            <div class="top-right"></div>
+                            <div class="bottom-left"></div>
+                            <div class="bottom-right"></div>
+                            <div class="card-header">
+                                <div class="card-titleQuestion2">
+                                    A true scientific story about climate change in the province of   <span id="state-title-5">.....</span>? (Trying to be more province focused)
+                                </div>
+                            </div>
+                            
+                            <div class="card-body" >
+                                <div>
+                                    <div class="row" class="card custom-card" id="state-card">
+                                        <p style="text-align: -webkit-left; font-size: large;" id="ia-output3"></p>
+                                    </div>
+                                </div>
+                            </div>
+                          
+                            
+                        </div>
+                    </div>
+            
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <div class="card custom-card">
+                        <h5 style="text-align: center;">The data presented were obtained from the Canadian government's website on greenhouse gas emissions: </h5>
+                        <a href="https://www.canada.ca/en/environment-climate-change/services/environmental-indicators/greenhouse-gas-emissions.html" style="text-decoration: underline; color: aqua; text-align: center;" target="_blank;"> Greenhouse gas emissions in Canada</a>
+                        </div>
+
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
 <!-- End::app-content -->
+
+<script>
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    
+    function ia(questionClass, outputId) {
+    return new Promise((resolve, reject) => {
+        const csrfToken = getCookie('csrftoken');  // Obtener el token CSRF
+        const questionElement = document.querySelector(`.${questionClass}`);  // Seleccionar el elemento según la clase proporcionada
+        const question = questionElement.innerText;
+    
+        fetch('/get-answer/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken  // Incluir el token CSRF en la cabecera
+            },
+            body: JSON.stringify({
+                'question': question
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Asegúrate de extraer el texto de respuesta correctamente
+            if (data.candidates && data.candidates.length > 0) {
+                document.getElementById(outputId).innerText = data.candidates[0].content.parts[0].text;
+            } else {
+                document.getElementById(outputId).innerText = "Error getting answer.";
+            }
+            resolve();  // Resuelve la promesa cuando la búsqueda se complete
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById(outputId).innerText = "Error getting answer.";
+            reject(error);  // Rechaza la promesa si hay un error
+        });
+    });
+}
+
+    
+function executeSearches() {
+    // Ocultar el mensaje "Complete!" al iniciar
+    document.getElementById('complete').style.visibility = 'hidden';
+
+    // Ejecutar la primera búsqueda
+    ia('card-titleQuestion1', 'ia-output2')
+    .then(() => {
+        // Ejecutar la segunda búsqueda
+        return ia('card-titleQuestion2', 'ia-output3');
+    })
+    .then(() => {
+        // Mostrar el mensaje de "Complete!" cuando todo haya terminado
+        document.getElementById('complete').style.visibility = 'visible';
+    })
+    .catch(error => {
+        console.error("Error en las búsquedas:", error);
+        // En caso de error, asegurarse de que "Complete!" no se muestre
+        document.getElementById('complete').style.visibility = 'hidden';
+    });
+}
+  
+</script>
+
 
 {% endblock %} {% block scripts %}
 <script src="{% static 'assets/libs/apexcharts/apexcharts.min.js'%}"></script>

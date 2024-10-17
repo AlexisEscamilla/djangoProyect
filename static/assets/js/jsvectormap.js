@@ -19,6 +19,21 @@
             })
             .catch(error => console.error('Error al obtener los datos:', error));
     }
+
+    function getEmissionsAmmoniaByState(stateName) {
+        console.log("Metano");
+        fetch('http://127.0.0.1:8000/api/emisiones/')
+            .then(response => response.json())
+            .then(data => {
+                const filteredData = data.filter(item => item.state_name.toLowerCase() === stateName.toLowerCase() && item.gas_name === "Ammonia");
+                
+                console.log(`Datos filtrados para ${stateName}:`, filteredData);
+    
+                // Aquí es donde puedes actualizar la gráfica con los datos filtrados
+                updateReversedBarChart(filteredData);
+            })
+            .catch(error => console.error('Error al obtener los datos:', error));
+    }
     
     /* Función de actualización de la gráfica */
     function updateReversedBarChart(filteredData) {
@@ -278,23 +293,6 @@
     })
     
 
-    // window.ia = function(){
-    //     console.log('hola')
-    //       const client = new Groq({
-    //           apiKey: process.env['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'], // This is the default and can be omitted
-    //         });
-          
-    //         async function main() {
-    //           const chatCompletion = await client.chat.completions.create({
-    //             messages: [{ role: 'user', content: 'Explain the importance of low latency LLMs' }],
-    //             model: 'llama3-8b-8192',
-    //           });
-          
-    //           console.log(chatCompletion.choices[0].message.content);
-    //      }
-    //      main();
-
-    // }
 
     /* us vector map */
     var map = new jsVectorMap({
@@ -372,6 +370,8 @@
                 var stateName = states[code];
                 console.log("El estado es:"+stateName);
                 document.getElementById('state-title-3').textContent = stateName;
+                document.getElementById('state-title-4').textContent = stateName;
+                document.getElementById('state-title-5').textContent = stateName;
                 //AQUÍ DEBEMOS MANDAR A LLAMAR LA FUNCIÓN QUE MODIFICARÁ LA GRÁFICA
                 getEmissionsMethaneByState(stateName);
                 getEmissionsCarbonByState(stateName);
@@ -429,6 +429,8 @@
             var stateName = states[code];
             console.log("El estado es:"+stateName);
             document.getElementById('state-title-3').textContent = stateName;
+            document.getElementById('state-title-4').textContent = stateName;
+            document.getElementById('state-title-5').textContent = stateName;
             //AQUÍ DEBEMOS MANDAR A LLAMAR LA FUNCIÓN QUE MODIFICARÁ LA GRÁFICA
             getEmissionsMethaneByState(stateName);
             getEmissionsCarbonByState(stateName);
@@ -529,6 +531,8 @@
                 getEmissionsCarbonByState(stateName);
                 
                 document.getElementById('state-title-3').textContent = stateName;
+                document.getElementById('state-title-4').textContent = stateName;
+                document.getElementById('state-title-5').textContent = stateName;
             } else {
                 console.log("Estado no encontrado");
             }
@@ -553,58 +557,24 @@
     
         onRegionClick: function(event, code) {
             var states = {
-                "ES-NA": "Navarra",
-                "ES-B": "Barcelona",
-                "ES-AL": "Almería",
-                "ES-CA": "Cádiz",
-                "ES-CO": "Córdoba",
-                "ES-GR": "Granada",
-                "ES-MA": "Málaga",
-                "ES-SE": "Sevilla",
-                "ES-H": "Huelva",
-                "ES-J": "Jaén",
-                "ES-A": "Alicante",
-                "ES-CS": "Castellón",
-                "ES-V": "Valencia",
-                "ES-AB": "Albacete",
-                "ES-CR": "Ciudad Real",
-                "ES-CU": "Cuenca",
-                "ES-GU": "Guadalajara",
-                "ES-TO": "Toledo",
-                "ES-AV": "Ávila",
-                "ES-BU": "Burgos",
-                "ES-LE": "León",
-                "ES-P": "Palencia",
-                "ES-SA": "Salamanca",
-                "ES-SG": "Segovia",
-                "ES-SO": "Soria",
-                "ES-VA": "Valladolid",
-                "ES-ZA": "Zamora",
-                "ES-CC": "Cáceres",
-                "ES-BA": "Badajoz",
-                "ES-M": "Madrid",
-                "ES-BI": "Bizkaia",
-                "ES-GI": "Gerona",
-                "ES-SS": "Gipuzkoa",
-                "ES-LO": "La Rioja",
-                "ES-O": "Asturias",
-                "ES-C": "La Coruña",
-                "ES-LU": "Lugo",
-                "ES-OR": "Ourense",
-                "ES-PO": "Pontevedra",
-                "ES-S": "Cantabria",
-                "ES-Z": "Zaragoza",
-                "ES-TE": "Teruel",
-                "ES-HU": "Huesca",
-                "ES-T": "Tarragona",
-                "ES-L": "Lleida",
-                "ES-GC": "Las Palmas",
-                "ES-TF": "Santa Cruz de Tenerife",
-                "ES-PM": "Baleares",
-                "ES-MU": "Murcia",
-                "ES-CE": "Ceuta",
-                "ES-ML": "Melilla",
-                "ES-AL": "Álava"
+                "ESPV": "PAÍS VASCO",
+                "ESRI": "LA RIOJA",
+                "ESCT": "CATALUÑA",
+                "ESAR": "ARAGÓN",
+                "ESEX": "EXTREMADURA",
+                "ESGA": "GALICIA",
+                "ESCL": "CASTILLA Y LEÓN",
+                "ESVC": "COMUNIDAD VALENCIANA",
+                "ESMC": "MURCIA",
+                "ESAN": "ANDALUCÍA",
+                "ESAS": "ASTURIAS",
+                "ESCB": "CANTABRIA",
+                "ESCN": "NAVARRA",
+                "ESIB": "BALEARES",
+                "ESCM": "CASTILLA-LA MANCHA",
+                "ESMD": "COMUNIDAD DE MADRID",
+                "ESCE": "CEUTA",
+                "ESML": "MELILLA"
             };
     
             console.log("El codigo es:" + code);
@@ -614,10 +584,12 @@
                 
                 // Check the API functions
                 console.log("Llamando a las funciones de emisiones para " + stateName);
-                getEmissionsMethaneByState(stateName);
+                getEmissionsAmmoniaByState(stateName);
                 getEmissionsCarbonByState(stateName);
                 
                 document.getElementById('state-title-3').textContent = stateName;
+                document.getElementById('state-title-4').textContent = stateName;
+                document.getElementById('state-title-5').textContent = stateName;
             } else {
                 console.log("Estado no encontrado");
             }
@@ -667,6 +639,9 @@
                 getEmissionsCarbonByState(stateName);
                 
                 document.getElementById('state-title-3').textContent = stateName;
+                document.getElementById('state-title-4').textContent = stateName;
+                document.getElementById('state-title-5').textContent = stateName;
+                
     
             } else {
                 console.log("Estado no encontrado");
@@ -696,7 +671,7 @@
                 "MXCHH": "Chihuahua",
                 "MXCOA": "Coahuila",
                 "MXTAM": "Tamaulipas",
-                "MXNLE": "Nuevo León",
+                "MXNLE": "Nuevo Leon",
                 "MXROO": "Quintana Roo",
                 "MXCAM": "Campeche",
                 "MXTAB": "Tabasco",
@@ -705,24 +680,24 @@
                 "MXNAY": "Nayarit",
                 "MXBCS": "Baja California Sur",
                 "MXSIN": "Sinaloa",
-                "MXYUC": "Yucatán",
+                "MXYUC": "Yucatan",
                 "MXVER": "Veracruz",
                 "MXJAL": "Jalisco",
-                "MXMIC": "Michoacán",
+                "MXMIC": "Michoacan",
                 "MXGRO": "Guerrero",
                 "MXOAX": "Oaxaca",
-                "MXMEX": "Estado de México",
+                "MXMEX": "Estado de Mexico",
                 "MXPUE": "Puebla",
                 "MXMOR": "Morelos",
-                "MXQUE": "Querétaro",
+                "MXQUE": "Queretaro",
                 "MXHID": "Hidalgo",
                 "MXGUA": "Guanajuato",
-                "MXSLP": "San Luis Potosí",
+                "MXSLP": "San Luis Potosi",
                 "MXZAC": "Zacatecas",
                 "MXAGU": "Aguascalientes",
                 "MXDUR": "Durango",
                 "MXTLA": "Tlaxcala",
-                "MXCMX": "Ciudad de México",
+                "MXCMX": "Ciudad de Mexico",
                 "MXSON": "Sonora"
             };
     
@@ -737,6 +712,8 @@
                 getEmissionsCarbonByState(stateName);
                 
                 document.getElementById('state-title-3').textContent = stateName;
+                document.getElementById('state-title-4').textContent = stateName;
+                document.getElementById('state-title-5').textContent = stateName;
     
             } else {
                 console.log("Estado no encontrado");

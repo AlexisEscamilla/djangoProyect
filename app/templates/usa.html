@@ -59,7 +59,7 @@
                     <div class="bottom-right"></div>
                     <div class="card-header" style="justify-content: space-around;">
                         <!-- <div class="card-title" id="state-title-2">Reversed Bar Chart</div> -->
-                        <div class="card-title">Carbone Dioxide Emission (Megatonnes of Methane Equivalent)</div>
+                        <div class="card-title">Carbone Dioxide Emission (Tonnes of Methane Equivalent)</div>
                     </div>
                     <div class="card-body">
                         <div id="bar-reversed"></div>
@@ -75,7 +75,7 @@
                     <div class="bottom-right"></div>
                     <div class="card-header" style="justify-content: space-around;">
                         <!-- <div class="card-title" id="state-title-2">Reversed Bar Chart</div> -->
-                        <div class="card-title">Methane Emission (Megatonnes of Methane Equivalent)</div>
+                        <div class="card-title">Methane Emission (Tonnes of Methane Equivalent)</div>
                     </div>
                     <div class="card-body">
                         <div id="bar-r"></div>
@@ -93,7 +93,7 @@
                    
                 </div>
             </div>
-
+            <h3 id="loadingg"style="text-align: center;  color: greenyellow; margin-bottom: 0px; visibility: hidden;">Loading...</h3>
             <h3 id="complete"style="text-align: center;  color: greenyellow; margin-bottom: 30px; visibility: hidden;">Complete!</h3>
 
             <div class="container">
@@ -224,6 +224,7 @@
     
 function executeSearches() {
     // Ocultar el mensaje "Complete!" al iniciar
+    document.getElementById('loadingg').style.visibility = 'visible';
     document.getElementById('complete').style.visibility = 'hidden';
 
     // Ejecutar la primera búsqueda
@@ -234,12 +235,14 @@ function executeSearches() {
     })
     .then(() => {
         // Mostrar el mensaje de "Complete!" cuando todo haya terminado
+        document.getElementById('loadingg').style.visibility = 'hidden';
         document.getElementById('complete').style.visibility = 'visible';
     })
     .catch(error => {
         console.error("Error en las búsquedas:", error);
         // En caso de error, asegurarse de que "Complete!" no se muestre
         document.getElementById('complete').style.visibility = 'hidden';
+        document.getElementById('loadingg').style.visibility = 'hidden';
     });
 }
     

@@ -1181,6 +1181,52 @@ Emisiones(co2e_emission=5.8, gas_name="Ammonia", year="2018", state_name="PAIS V
 Emisiones(co2e_emission=16.5, gas_name="Ammonia", year="2018", state_name="MURCIA")
 
 ]  
+        
+        
+        emisiones_dataCanadametano = [  
+    Emisiones(co2e_emission=9.5, gas_name="Methane", year="1990", state_name="Newfoundland and Labrador"),
+    Emisiones(co2e_emission=1.8, gas_name="Methane", year="1990", state_name="Prince Edward Island"),
+    Emisiones(co2e_emission=20.0, gas_name="Methane", year="1990", state_name="Nova Scotia"),
+    Emisiones(co2e_emission=16.0, gas_name="Methane", year="1990", state_name="New Brunswick"),
+    Emisiones(co2e_emission=84.0, gas_name="Methane", year="1990", state_name="Quebec"),
+    Emisiones(co2e_emission=178.0, gas_name="Methane", year="1990", state_name="Ontario"),
+    Emisiones(co2e_emission=18.0, gas_name="Methane", year="1990", state_name="Manitoba"),
+    Emisiones(co2e_emission=76.0, gas_name="Methane", year="1990", state_name="Saskatchewan"),
+    Emisiones(co2e_emission=177.0, gas_name="Methane", year="1990", state_name="Alberta"),
+    Emisiones(co2e_emission=51.0, gas_name="Methane", year="1990", state_name="British Columbia"),
+    Emisiones(co2e_emission=0.55, gas_name="Methane", year="1990", state_name="Yukon"),
+     Emisiones(co2e_emission=0, gas_name="Methane", year="1990", state_name="Northwest Territories"),
+      Emisiones(co2e_emission=0, gas_name="Methane", year="1990", state_name="Nunavut"),
+
+    Emisiones(co2e_emission=10.0, gas_name="Methane", year="2005", state_name="Newfoundland and Labrador"),
+    Emisiones(co2e_emission=1.9, gas_name="Methane", year="2005", state_name="Prince Edward Island"),
+    Emisiones(co2e_emission=23.0, gas_name="Methane", year="2005", state_name="Nova Scotia"),
+    Emisiones(co2e_emission=20.0, gas_name="Methane", year="2005", state_name="New Brunswick"),
+    Emisiones(co2e_emission=86.0, gas_name="Methane", year="2005", state_name="Quebec"),
+    Emisiones(co2e_emission=203.0, gas_name="Methane", year="2005", state_name="Ontario"),
+    Emisiones(co2e_emission=21.0, gas_name="Methane", year="2005", state_name="Manitoba"),
+    Emisiones(co2e_emission=80.0, gas_name="Methane", year="2005", state_name="Saskatchewan"),
+    Emisiones(co2e_emission=251.0, gas_name="Methane", year="2005", state_name="Alberta"),
+    Emisiones(co2e_emission=63.0, gas_name="Methane", year="2005", state_name="British Columbia"),
+    Emisiones(co2e_emission=0.56, gas_name="Methane", year="2005", state_name="Yukon"),
+    Emisiones(co2e_emission=1.7, gas_name="Methane", year="2005", state_name="Northwest Territories"),
+    Emisiones(co2e_emission=0.58, gas_name="Methane", year="2005", state_name="Nunavut"),
+
+    Emisiones(co2e_emission=8.6, gas_name="Methane", year="2022", state_name="Newfoundland and Labrador"),
+    Emisiones(co2e_emission=1.6, gas_name="Methane", year="2022", state_name="Prince Edward Island"),
+    Emisiones(co2e_emission=15.0, gas_name="Methane", year="2022", state_name="Nova Scotia"),
+    Emisiones(co2e_emission=12.0, gas_name="Methane", year="2022", state_name="New Brunswick"),
+    Emisiones(co2e_emission=79.0, gas_name="Methane", year="2022", state_name="Quebec"),
+    Emisiones(co2e_emission=157.0, gas_name="Methane", year="2022", state_name="Ontario"),
+    Emisiones(co2e_emission=22.0, gas_name="Methane", year="2022", state_name="Manitoba"),
+    Emisiones(co2e_emission=76.0, gas_name="Methane", year="2022", state_name="Saskatchewan"),
+    Emisiones(co2e_emission=270.0, gas_name="Methane", year="2022", state_name="Alberta"),
+    Emisiones(co2e_emission=64.0, gas_name="Methane", year="2022", state_name="British Columbia"),
+    Emisiones(co2e_emission=0.66, gas_name="Methane", year="2022", state_name="Yukon"),
+    Emisiones(co2e_emission=1.4, gas_name="Methane", year="2022", state_name="Northwest Territories"),
+    Emisiones(co2e_emission=0.62, gas_name="Methane", year="2022", state_name="Nunavut")
+
+]  
 # Insertar los registros de manera masiva
-        Emisiones.objects.bulk_create(emisiones_dataSpainAmo)
+        Emisiones.objects.bulk_create(emisiones_dataCanadametano)
         self.stdout.write(self.style.SUCCESS('Datos insertados exitosamente.'))

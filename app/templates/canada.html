@@ -95,7 +95,7 @@
                    
                 </div>
             </div>
-
+            <h3 id="loadingg"style="text-align: center;  color: greenyellow; margin-bottom: 0px; visibility: hidden;">Loading...</h3>
             <h3 id="complete"style="text-align: center;  color: greenyellow; margin-bottom: 30px; visibility: hidden;">Complete!</h3>
             
             <div class="container">
@@ -156,7 +156,7 @@
                 <div style="margin-bottom: 30px;">
                     <div class="card custom-card">
                         <h5 style="text-align: center;">The data presented were obtained from the Canadian government's website on greenhouse gas emissions: </h5>
-                        <a href="https://www.canada.ca/en/environment-climate-change/services/environmental-indicators/greenhouse-gas-emissions.html" style="text-decoration: underline; color: aqua; text-align: center;" target="_blank;"> Greenhouse gas emissions in Canada</a>
+                        <a href="https://publications.gc.ca/collections/collection_2024/eccc/En81-4-2022-1-eng.pdf" style="text-decoration: underline; color: aqua; text-align: center;" target="_blank;"> Greenhouse gas emissions in Canada</a>
                         </div>
 
                 </div>
@@ -226,6 +226,7 @@
     
 function executeSearches() {
     // Ocultar el mensaje "Complete!" al iniciar
+    document.getElementById('loadingg').style.visibility = 'visible';
     document.getElementById('complete').style.visibility = 'hidden';
 
     // Ejecutar la primera búsqueda
@@ -236,12 +237,14 @@ function executeSearches() {
     })
     .then(() => {
         // Mostrar el mensaje de "Complete!" cuando todo haya terminado
+        document.getElementById('loadingg').style.visibility = 'hidden';
         document.getElementById('complete').style.visibility = 'visible';
     })
     .catch(error => {
         console.error("Error en las búsquedas:", error);
         // En caso de error, asegurarse de que "Complete!" no se muestre
         document.getElementById('complete').style.visibility = 'hidden';
+        document.getElementById('loadingg').style.visibility = 'hidden';
     });
 }
   
